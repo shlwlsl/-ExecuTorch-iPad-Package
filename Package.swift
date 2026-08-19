@@ -9,14 +9,24 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "ExecuTorch",
-            targets: ["ExecuTorch"]
+            name: "ExecuTorchBridge",
+            targets: ["ExecuTorchBridge"]
         )
     ],
     targets: [
         .binaryTarget(
             name: "ExecuTorch",
             path: "Frameworks/executorch.xcframework"
+        ),
+        .target(
+            name: "ExecuTorchBridge",
+            dependencies: [
+                .target(name: "ExecuTorch")
+            ],
+            path: "Sources/executorch_with_dependencies",
+            linkerSettings: [
+                .linkedLibrary("c++")
+            ]
         )
     ]
 )
