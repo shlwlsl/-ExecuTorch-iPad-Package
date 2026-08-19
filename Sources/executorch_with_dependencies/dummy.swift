@@ -1,1 +1,5 @@
-// Intentionally empty. This wrapper target carries linker settings for the ExecuTorch binary target.
+import ExecuTorch
+
+public enum ExecuTorchBridgeTest {
+    public static let loaded = true
+}
